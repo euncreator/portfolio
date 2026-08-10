@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Kim Eun-jung — Product & System Design Portfolio</title>
+<title>Eundi — Product & System Design Portfolio</title>
 
 <link rel="stylesheet" as="style" crossorigin
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
@@ -89,26 +89,27 @@
     display:flex; align-items:center; justify-content:space-between; gap: 24px;
   }
   .brand{
-    display:flex; align-items:baseline; gap: 10px;
+    display:flex; align-items:center; gap: 8px;
     font-weight: 700; font-size: 20px; letter-spacing: -0.02em;
+    height: 100%; line-height: 1;
   }
   .brand .dot{
     width:7px; height:7px; border-radius: 50%; background: var(--fg);
-    display:inline-block; transform: translateY(-3px);
+    display:inline-block; flex-shrink: 0;
   }
-  .brand .name{ font-weight: 800; }
+  .brand .name{ font-weight: 800; line-height: 1; }
   .brand .role{
     font-size: 12px; color: var(--fg-mute); font-weight: 500;
-    letter-spacing: 0; margin-left: 4px;
+    letter-spacing: 0; margin-left: 4px; display: inline-flex; align-items: center;
   }
 
   .nav{
-    display:flex; align-items:center; gap: 4px;
+    display:flex; align-items:center; gap: 4px; height: 100%;
   }
   .nav a{
     padding: 8px 14px; font-size: 14px; color: var(--fg-mute);
-    border-radius: 8px; font-weight: 500;
-    transition: color .15s, background .15s;
+    border-radius: 8px; font-weight: 500; display: inline-flex; align-items: center;
+    transition: color .15s, background .15s; height: 36px;
   }
   .nav a:hover{ color: var(--fg); background: var(--btn-bg-hover); }
 
@@ -302,7 +303,7 @@
     border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
   }
 
-  /* ============ IMPACT & PROBLEM SOLVING ============ */
+  /* ============ PROJECTS (KEY HISTORY) ============ */
   .impact-grid{
     display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter);
   }
@@ -462,9 +463,9 @@
 <!-- =============== HEADER =============== -->
 <header class="header">
   <div class="header-inner">
-    <a href="#top" class="brand" aria-label="Kim Eun-jung home">
+    <a href="#top" class="brand" aria-label="Eundi home">
       <span class="dot" aria-hidden="true"></span>
-      <span class="name">김은정</span>
+      <span class="name">은디</span>
       <span class="role">
         <span class="kr-only">E2S · 디자인/기획 총괄</span>
         <span class="en-only">E2S · Total Planning & Design</span>
@@ -474,7 +475,7 @@
     <nav class="nav" aria-label="primary">
       <a href="#work"><span class="kr-only">작업</span><span class="en-only">Work</span></a>
       <a href="#capabilities"><span class="kr-only">역량</span><span class="en-only">Capabilities</span></a>
-      <a href="#impact"><span class="kr-only">임팩트</span><span class="en-only">Impact</span></a>
+      <a href="#projects"><span class="kr-only">프로젝트</span><span class="en-only">Projects</span></a>
       <a href="#about"><span class="kr-only">소개</span><span class="en-only">About</span></a>
       <a href="#contact"><span class="kr-only">연락처</span><span class="en-only">Contact</span></a>
     </nav>
@@ -536,34 +537,34 @@
   <div class="cap-grid" id="capGrid"></div>
 </section>
 
-<!-- =============== IMPACT & PROBLEM SOLVING =============== -->
-<section class="section" id="impact">
-  <h2><span class="kr-only">문제 해결 & 임팩트</span><span class="en-only">Problem Solving & Impact</span></h2>
+<!-- =============== PROJECTS (KEY HISTORY) =============== -->
+<section class="section" id="projects">
+  <h2><span class="kr-only">프로젝트 이력</span><span class="en-only">Key Project History</span></h2>
   <p class="cap-intro" style="font-size:16px; margin-bottom:32px;">
-    <span class="kr-only block">디자인을 넘어 도메인의 문제를 정의하고 정교한 시스템으로 해결해 온 주요 성과입니다.</span>
-    <span class="en-only block">Key achievements defining domain problems beyond design and solving them through refined systems.</span>
+    <span class="kr-only block">핵심 엔지니어링 도메인과 글로벌 비즈니스 이정표를 정교하게 해결해 온 프로젝트 히스토리입니다.</span>
+    <span class="en-only block">Milestone project history solving complex engineering and global business challenges with design systems.</span>
   </p>
   <div class="impact-grid">
     <div class="impact-card">
       <div>
-        <h3><span class="kr-only">복잡한 엔지니어링 도메인 시각화</span><span class="en-only">Complex Domain Visualization</span></h3>
-        <p><span class="kr-only">제어 시스템, HMI, EMS 등 난이도 높은 기술 도메인을 직관적인 UI/UX와 문서 구조로 시각화하여 사내 및 해외 협력사간 의사소통 효율을 극대화했습니다.</span><span class="en-only">Visualized complex engineering domains like HMI and EMS with intuitive UI/UX, maximizing communication efficiency internally and globally.</span></p>
+        <h3><span class="kr-only">제어 및 엔지니어링 UI/UX 고도화</span><span class="en-only">Engineering UI/UX Optimization</span></h3>
+        <p><span class="kr-only">HMI, EMS, PMS 등 전문 기술 도메인을 직관적인 UI 구조로 단순화하고, 관제 현장의 오작동 비율을 크게 낮춘 관제 시스템 프로젝트입니다.</span><span class="en-only">Streamlined complex engineering domains into intuitive HMI/PMS UI structures, lowering error risks in real-time control operations.</span></p>
       </div>
-      <div class="impact-badge"><span class="kr-only">정보 구조화 &amp; UX 설계</span><span class="en-only">IA &amp; UX Design</span></div>
+      <div class="impact-badge"><span class="kr-only">2026 · HMI &amp; PMS System</span><span class="en-only">2026 · HMI &amp; PMS System</span></div>
     </div>
     <div class="impact-card">
       <div>
-        <h3><span class="kr-only">글로벌 시스템 및 웹스펙 구축</span><span class="en-only">Global Web &amp; System Specs</span></h3>
-        <p><span class="kr-only">미국 법인 TCI Inc. 웹사이트 및 PMS 시스템 기획에 주도적으로 참여하여, 글로벌 표준에 부합하는 가이드라인을 수립하고 직접 서버(FTP) 배포 및 관리를 정밀하게 총괄했습니다.</span><span class="en-only">Led website &amp; PMS planning for US entity TCI Inc., establishing global guidelines and directly managing server deployments with precision.</span></p>
+        <h3><span class="kr-only">해외 법인 글로벌 디지털 이니셔티브</span><span class="en-only">Global Digital Entity Setup</span></h3>
+        <p><span class="kr-only">미국 법인 TCI Inc. 공식 웹사이트 및 PMS 구축을 주도하고, 해외 규격 가이드라인 수립부터 서버(FTP) 직접 배포/관리를 완료했습니다.</span><span class="en-only">Led the US entity TCI Inc. digital setup, from global brand web spec alignment to direct FTP server deployment.</span></p>
       </div>
-      <div class="impact-badge"><span class="kr-only">글로벌 커뮤니케이션 &amp; 개발 구현</span><span class="en-only">Global Systems &amp; FTP Ops</span></div>
+      <div class="impact-badge"><span class="kr-only">2026 · Global TCI Inc.</span><span class="en-only">2026 · Global TCI Inc.</span></div>
     </div>
     <div class="impact-card">
       <div>
-        <h3><span class="kr-only">전사 통합 브랜딩 &amp; 가이드라인</span><span class="en-only">End-to-End Brand System</span></h3>
-        <p><span class="kr-only">로고 CI/BI 개발부터 오피스 사이니지, 제안서 템플릿, 사내 시스템 UI까지 흩어져 있던 전사 브랜딩 요소들을 일관된 하나의 디자인 시스템으로 규격화했습니다.</span><span class="en-only">Standardized scattered brand touchpoints—from CI/BI and office signage to proposal templates and internal UI—into a single unified design system.</span></p>
+        <h3><span class="kr-only">전사 아이덴티티 &amp; 디자인 시스템</span><span class="en-only">Corporate Brand Systems</span></h3>
+        <p><span class="kr-only">상표 출원부터 신규 CI/BI 개발, 사원증 및 오피스 사이니지, 영업 제안서에 이르는 브랜드 경험을 표준 시스템으로 통일했습니다.</span><span class="en-only">Standardized corporate identity touchpoints from trademark filings and CI/BI design to office signage and pitch decks.</span></p>
       </div>
-      <div class="impact-badge"><span class="kr-only">디자인 시스템 &amp; 브랜딩</span><span class="en-only">Design Systems &amp; Branding</span></div>
+      <div class="impact-badge"><span class="kr-only">2025–2026 · E2S Total Brand</span><span class="en-only">2025–2026 · E2S Total Brand</span></div>
     </div>
   </div>
 </section>
@@ -574,8 +575,8 @@
   <div class="about-layout">
     <div class="about-main">
       <p>
-        <span class="kr-only block">문제의 본질을 정의하고, 시스템으로 확장 가능한 디자인을 만드는 김은정입니다.</span>
-        <span class="en-only block">I'm Kim Eun-jung — defining core problems and building scalable, system-driven designs.</span>
+        <span class="kr-only block">문제의 본질을 정의하고, 시스템으로 확장 가능한 디자인을 만드는 은디(김은정)입니다.</span>
+        <span class="en-only block">I'm Eundi (Kim Eun-jung) — defining core problems and building scalable, system-driven designs.</span>
       </p>
       <p class="sub">
         <span class="kr-only block">디자인을 단순히 아름다운 겉모습을 만드는 일에 한정하지 않습니다. 사업적 맥락을 정확히 읽어내고, 복잡한 시스템과 데이터 구조를 사용자가 가장 쉽게 이해할 수 있는 형태의 유저 경험(UX)으로 시각화하는 것에 기쁨을 느낍니다. 10년 간 기획, 브랜딩, 웹/UIUX, 문서 시각화 등 다양한 직무 영역을 넘나들며 쌓아온 단단한 연결력을 바탕으로 팀의 성장을 이끕니다.</span>
@@ -625,7 +626,7 @@
 </section>
 
 <footer class="footer">
-  <span>© 2026 Kim Eun-jung. All rights reserved.</span>
+  <span>© 2026 Eundi. All rights reserved.</span>
   <span>Total Planning & Design</span>
 </footer>
 
