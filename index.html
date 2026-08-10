@@ -1,0 +1,1021 @@
+<!doctype html>
+<html lang="ko" data-theme="dark" data-lang="kr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kim Eun-jung — Design & Planning Portfolio</title>
+
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+<style>
+  :root{
+    --bg: #0e0e10;
+    --bg-elev: #17171a;
+    --bg-elev-2: #1e1e22;
+    --line: #26262b;
+    --line-strong: #35353c;
+    --fg: #f2f2f3;
+    --fg-mute: #a1a1a8;
+    --fg-dim: #6d6d76;
+    --btn-fg: #e9e9ec;
+    --btn-bg: #1a1a1e;
+    --btn-bg-hover: #24242a;
+    --btn-active-bg: #f2f2f3;
+    --btn-active-fg: #0e0e10;
+    --overlay: rgba(10,10,12,.72);
+    --skel-a: #1c1c20;
+    --skel-b: #24242a;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --gutter: 14px;
+    --header-h: 68px;
+    --subhead-h: 72px;
+    --content-max: 1520px;
+    --side-pad: 40px;
+  }
+  html[data-theme="light"]{
+    --bg: #ffffff;
+    --bg-elev: #f6f6f7;
+    --bg-elev-2: #ececee;
+    --line: #e6e6e8;
+    --line-strong: #d5d5d8;
+    --fg: #0e0e10;
+    --fg-mute: #5b5b62;
+    --fg-dim: #8f8f97;
+    --btn-fg: #17171a;
+    --btn-bg: #f2f2f3;
+    --btn-bg-hover: #e6e6e8;
+    --btn-active-bg: #0e0e10;
+    --btn-active-fg: #ffffff;
+    --overlay: rgba(255,255,255,.78);
+    --skel-a: #ececee;
+    --skel-b: #e0e0e3;
+  }
+
+  *{ box-sizing: border-box; }
+  html, body{ margin:0; padding:0; }
+  html, body{
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-feature-settings: "ss01","ss03";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background .25s ease, color .25s ease;
+  }
+  body{
+    min-height: 100vh;
+    letter-spacing: -0.01em;
+  }
+  a{ color: inherit; text-decoration: none; }
+  button{ font-family: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+  img{ display: block; max-width: 100%; }
+
+  /* ============ HEADER ============ */
+  .header{
+    position: sticky; top:0; z-index: 40;
+    height: var(--header-h);
+    display:flex; align-items:center;
+    padding: 0 var(--side-pad);
+    background: color-mix(in oklab, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(1.2) blur(14px);
+    -webkit-backdrop-filter: saturate(1.2) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner{
+    width:100%; max-width: var(--content-max); margin: 0 auto;
+    display:flex; align-items:center; justify-content:space-between; gap: 24px;
+  }
+  .brand{
+    display:flex; align-items:baseline; gap: 10px;
+    font-weight: 700; font-size: 20px; letter-spacing: -0.02em;
+  }
+  .brand .dot{
+    width:7px; height:7px; border-radius: 50%; background: var(--fg);
+    display:inline-block; transform: translateY(-3px);
+  }
+  .brand .name{ font-weight: 800; }
+  .brand .role{
+    font-size: 12px; color: var(--fg-mute); font-weight: 500;
+    letter-spacing: 0; margin-left: 4px;
+  }
+
+  .nav{
+    display:flex; align-items:center; gap: 4px;
+  }
+  .nav a{
+    padding: 8px 14px; font-size: 14px; color: var(--fg-mute);
+    border-radius: 8px; font-weight: 500;
+    transition: color .15s, background .15s;
+  }
+  .nav a:hover{ color: var(--fg); background: var(--btn-bg-hover); }
+
+  .header-tools{
+    display:flex; align-items:center; gap: 6px;
+  }
+  .icon-btn{
+    width: 36px; height: 36px; display: inline-flex; align-items:center; justify-content:center;
+    border-radius: 10px; color: var(--fg-mute);
+    transition: background .15s, color .15s;
+  }
+  .icon-btn:hover{ background: var(--btn-bg-hover); color: var(--fg); }
+  .icon-btn svg{ width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;}
+
+  .lang-toggle{
+    display:inline-flex; align-items:center; height: 32px; padding: 3px;
+    border: 1px solid var(--line); border-radius: 999px; margin-left: 4px;
+    background: transparent;
+  }
+  .lang-toggle button{
+    padding: 4px 12px; font-size: 12px; font-weight: 600; color: var(--fg-mute);
+    border-radius: 999px; letter-spacing: 0.02em;
+    transition: background .15s, color .15s;
+  }
+  .lang-toggle button.active{
+    background: var(--fg); color: var(--bg);
+  }
+
+  /* ============ SUBHEADER (categories + sort) ============ */
+  .subhead{
+    position: sticky; top: var(--header-h); z-index: 30;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(1.2) blur(14px);
+    -webkit-backdrop-filter: saturate(1.2) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .subhead-inner{
+    max-width: var(--content-max); margin: 0 auto;
+    padding: 16px var(--side-pad);
+    display:flex; align-items:center; justify-content: space-between; gap: 24px;
+  }
+  .cats{
+    display:flex; flex-wrap: wrap; gap: 8px;
+  }
+  .cat{
+    padding: 9px 16px; font-size: 13px; font-weight: 600;
+    color: var(--btn-fg);
+    background: var(--btn-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    letter-spacing: -0.005em;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: background .15s, color .15s, border-color .15s, transform .05s;
+    white-space: nowrap;
+  }
+  .cat:hover{ background: var(--btn-bg-hover); border-color: var(--line-strong); }
+  .cat[aria-pressed="true"]{
+    background: var(--btn-active-bg);
+    color: var(--btn-active-fg);
+    border-color: var(--btn-active-bg);
+  }
+  .cat .count{
+    font-size: 11px; opacity: .55; font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .cat[aria-pressed="true"] .count{ opacity: .55; }
+
+  .sort{
+    position: relative;
+    display:inline-flex; align-items:center;
+  }
+  .sort-btn{
+    display:inline-flex; align-items:center; gap: 8px;
+    padding: 9px 12px 9px 14px; font-size: 13px; font-weight: 600;
+    color: var(--btn-fg); background: var(--btn-bg);
+    border:1px solid var(--line); border-radius: var(--radius-sm);
+    white-space: nowrap;
+  }
+  .sort-btn:hover{ background: var(--btn-bg-hover); }
+  .sort-btn svg{ width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;}
+  .sort-btn .label-key{ color: var(--fg-mute); font-weight: 500; margin-right: 2px;}
+  .sort-menu{
+    position: absolute; right: 0; top: calc(100% + 6px);
+    background: var(--bg-elev); border:1px solid var(--line);
+    border-radius: 10px; padding: 6px; min-width: 200px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.28);
+    display:none; z-index: 50;
+  }
+  .sort.open .sort-menu{ display:block; }
+  .sort-menu button{
+    display:flex; width:100%; align-items:center; justify-content:space-between;
+    padding: 10px 12px; font-size: 13px; font-weight: 500;
+    color: var(--fg); border-radius: 8px;
+  }
+  .sort-menu button:hover{ background: var(--btn-bg-hover); }
+  .sort-menu button.active{ color: var(--fg); }
+  .sort-menu button.active::after{
+    content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--fg);
+  }
+
+  /* ============ GRID ============ */
+  .work-region{
+    max-width: var(--content-max); margin: 0 auto;
+    padding: 28px var(--side-pad) 80px;
+  }
+  .grid{
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--gutter);
+  }
+  @media (max-width: 1200px){ .grid{ grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 820px){  .grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px){  .grid{ grid-template-columns: 1fr; } }
+
+  .card{
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    cursor: pointer;
+    isolation: isolate;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .2s;
+  }
+  .card:hover{ border-color: var(--line-strong); }
+  .thumb{
+    position: relative; width: 100%; aspect-ratio: 4/3;
+    overflow: hidden; background: var(--bg-elev-2);
+  }
+  .thumb .art{
+    position: absolute; inset: 0;
+    transition: transform .6s cubic-bezier(.2,.7,.2,1), filter .3s;
+  }
+  .card:hover .thumb .art{ transform: scale(1.04); }
+  .card .overlay{
+    position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.78) 100%);
+    opacity: 0; transition: opacity .25s;
+    display:flex; align-items:flex-end; padding: 16px;
+  }
+  .card:hover .overlay{ opacity: 1; }
+  .card .overlay .meta{ color: #fff; }
+  .card .overlay .meta .t{ font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+  .card .overlay .meta .s{ font-size: 12px; opacity: .78; margin-top: 4px; }
+  .card .caption{
+    padding: 12px 14px 14px;
+    display:flex; align-items:center; justify-content:space-between; gap: 10px;
+  }
+  .card .caption .l{
+    min-width: 0;
+  }
+  .card .caption .title{
+    font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--fg);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .card .caption .sub{
+    font-size: 12px; color: var(--fg-mute); margin-top: 2px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .card .caption .r{
+    font-size: 11px; color: var(--fg-dim); font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em; white-space: nowrap;
+  }
+
+  /* Placeholder art variations — abstract, monochrome */
+  .art{ background-color: var(--bg-elev-2); }
+  .art--a{ background:
+    radial-gradient(120% 80% at 20% 20%, #3a3a41 0%, #17171a 60%),
+    linear-gradient(180deg, #26262b, #101012); }
+  .art--b{ background:
+    conic-gradient(from 210deg at 60% 40%, #2b2b30, #4a4a52, #202024, #2b2b30);}
+  .art--c{ background:
+    repeating-linear-gradient(45deg, #1c1c20 0 18px, #26262b 18px 36px);}
+  .art--d{ background:
+    radial-gradient(60% 60% at 70% 30%, #55555d 0%, #1a1a1e 70%); }
+  .art--e{ background:
+    linear-gradient(135deg, #101012 0%, #2c2c31 50%, #0e0e10 100%); }
+  .art--f{ background:
+    repeating-radial-gradient(circle at 30% 70%, #23232a 0 12px, #17171a 12px 24px);}
+  .art--g{ background:
+    linear-gradient(180deg, #24242a, #101012), radial-gradient(circle, #333338 20%, transparent 22%) 0 0 / 22px 22px;
+    background-blend-mode: overlay;}
+  .art--h{ background:
+    linear-gradient(90deg, #1a1a1e 0 33%, #2b2b30 33% 66%, #17171a 66%);}
+
+  html[data-theme="light"] .art--a{ background:
+    radial-gradient(120% 80% at 20% 20%, #d9d9dc 0%, #f2f2f3 60%),
+    linear-gradient(180deg, #ececee, #f6f6f7); }
+  html[data-theme="light"] .art--b{ background:
+    conic-gradient(from 210deg at 60% 40%, #e6e6e8, #cfcfd3, #ececee, #e6e6e8);}
+  html[data-theme="light"] .art--c{ background:
+    repeating-linear-gradient(45deg, #ececee 0 18px, #e0e0e3 18px 36px);}
+  html[data-theme="light"] .art--d{ background:
+    radial-gradient(60% 60% at 70% 30%, #b9b9c0 0%, #ececee 70%); }
+  html[data-theme="light"] .art--e{ background:
+    linear-gradient(135deg, #ffffff 0%, #dedee1 50%, #f6f6f7 100%); }
+  html[data-theme="light"] .art--f{ background:
+    repeating-radial-gradient(circle at 30% 70%, #dedee1 0 12px, #ececee 12px 24px);}
+  html[data-theme="light"] .art--g{ background:
+    linear-gradient(180deg, #f6f6f7, #e6e6e8), radial-gradient(circle, #cfcfd3 20%, transparent 22%) 0 0 / 22px 22px;
+    background-blend-mode: overlay;}
+  html[data-theme="light"] .art--h{ background:
+    linear-gradient(90deg, #f6f6f7 0 33%, #e0e0e3 33% 66%, #ececee 66%);}
+
+  /* small letter mark inside placeholder for character */
+  .art .mark{
+    position: absolute; inset: 0; display:flex; align-items:center; justify-content:center;
+    font-weight: 800; font-size: 44px; letter-spacing: -0.03em;
+    color: rgba(255,255,255,.06);
+  }
+  html[data-theme="light"] .art .mark{ color: rgba(0,0,0,.05); }
+
+  /* Empty state */
+  .empty{
+    padding: 80px 20px; text-align:center; color: var(--fg-mute);
+    font-size: 14px;
+  }
+
+  /* ============ CAPABILITIES ============ */
+  .cap-intro{
+    font-size: 20px; line-height: 1.55; letter-spacing: -0.015em; color: var(--fg);
+    max-width: 720px; margin: 0 0 40px; text-wrap: pretty;
+  }
+  .cap-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter);
+  }
+  @media (max-width: 1000px){ .cap-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px){ .cap-grid{ grid-template-columns: 1fr; } }
+  .cap-card{
+    background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-md);
+    padding: 24px; transition: border-color .2s, transform .2s;
+  }
+  .cap-card:hover{ border-color: var(--line-strong); transform: translateY(-2px); }
+  .cap-card .cap-no{
+    font-size: 12px; font-weight: 700; color: var(--fg-dim); letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums; margin-bottom: 14px;
+  }
+  .cap-card h3{
+    font-size: 16px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 8px;
+  }
+  .cap-card p{
+    font-size: 13.5px; color: var(--fg-mute); line-height: 1.6; margin: 0 0 14px;
+  }
+  .cap-card .cap-tags{ display:flex; flex-wrap:wrap; gap: 6px; }
+  .cap-card .cap-tag{
+    font-size: 11px; font-weight: 600; color: var(--fg-mute);
+    border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
+  }
+
+  /* ============ VALUE ============ */
+  .value-lede{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 40px;
+  }
+  @media (max-width: 820px){ .value-lede{ grid-template-columns: 1fr; gap: 24px; } }
+  .value-quote{
+    font-size: 15px; color: var(--fg-mute); line-height: 1.7; padding-left: 18px;
+    border-left: 2px solid var(--line-strong); font-style: italic;
+  }
+  .value-claim{
+    font-size: 22px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.45; color: var(--fg);
+    margin: 0 0 14px;
+  }
+  .value-claim b{ color: var(--fg); }
+  .value-body{ font-size: 14.5px; color: var(--fg-mute); line-height: 1.7; }
+  .value-body strong{ color: var(--fg); font-weight: 700; }
+
+  .dept-grid{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+  }
+  @media (max-width: 480px){ .dept-grid{ grid-template-columns: 1fr; } }
+  .dept-card{
+    background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-sm);
+    padding: 14px 16px;
+  }
+  .dept-card h4{ font-size: 13.5px; font-weight: 700; margin: 0 0 4px; }
+  .dept-card p{ font-size: 12px; color: var(--fg-mute); margin: 0; }
+
+  .value-table-wrap{
+    border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 32px;
+  }
+  table.value-table{ width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.value-table th{
+    background: var(--bg-elev); text-align: left; font-weight: 600; color: var(--fg-mute);
+    padding: 14px 20px; border-bottom: 1px solid var(--line); font-size: 12px;
+  }
+  table.value-table td{
+    padding: 14px 20px; border-bottom: 1px solid var(--line); color: var(--fg); font-weight: 500;
+  }
+  table.value-table tr:last-child td{ border-bottom: none; }
+  table.value-table td.num, table.value-table th.num{ text-align: right; font-variant-numeric: tabular-nums; }
+  table.value-table tr.total td{
+    background: var(--bg-elev-2); font-weight: 800; color: var(--fg);
+  }
+
+  .value-summary{
+    border: 1px solid var(--line-strong); border-radius: var(--radius-md);
+    padding: 28px; text-align: center; background: var(--bg-elev);
+  }
+  .value-summary h4{ font-size: 15px; font-weight: 700; margin: 0 0 12px; }
+  .value-summary p{ font-size: 13.5px; color: var(--fg-mute); line-height: 1.7; max-width: 640px; margin: 0 auto; }
+  .value-summary strong{ color: var(--fg); }
+
+  /* ============ FOOTER SECTIONS (About / Contact) ============ */
+  .section{
+    max-width: var(--content-max); margin: 0 auto;
+    padding: 60px var(--side-pad);
+    border-top: 1px solid var(--line);
+  }
+  .section h2{
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+    color: var(--fg-dim); margin: 0 0 24px; text-transform: uppercase;
+  }
+  .about{
+    display:grid; grid-template-columns: 1.6fr 1fr; gap: 60px; align-items:start;
+  }
+  @media (max-width: 820px){ .about{ grid-template-columns: 1fr; gap: 32px; } }
+  .about p{
+    font-size: 20px; line-height: 1.55; letter-spacing: -0.015em; color: var(--fg);
+    margin: 0 0 16px; text-wrap: pretty;
+  }
+  .about p.mute{ color: var(--fg-mute); font-size: 15px; }
+  .about .meta-list{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; font-size: 13px;
+  }
+  .about .meta-list dt{ color: var(--fg-dim); font-weight: 500; padding: 8px 0; border-top: 1px solid var(--line); }
+  .about .meta-list dd{ color: var(--fg); font-weight: 500; margin: 0; padding: 8px 0; border-top: 1px solid var(--line); text-align: right;}
+  .contact{
+    display:flex; align-items:flex-end; justify-content:space-between; gap: 40px; flex-wrap: wrap;
+  }
+  .contact .big{
+    font-size: clamp(36px, 6vw, 72px); font-weight: 800; letter-spacing: -0.035em;
+    line-height: 1; color: var(--fg);
+  }
+  .contact .big a{ border-bottom: 2px solid var(--line-strong); padding-bottom: 4px; transition: border-color .2s;}
+  .contact .big a:hover{ border-color: var(--fg); }
+  .contact .links{
+    display:flex; gap: 10px; flex-wrap: wrap;
+  }
+  .contact .links a{
+    padding: 10px 16px; border:1px solid var(--line); border-radius: 999px;
+    font-size: 13px; font-weight: 600; color: var(--fg);
+    transition: background .15s, border-color .15s;
+  }
+  .contact .links a:hover{ background: var(--btn-bg-hover); border-color: var(--line-strong); }
+
+  .footer{
+    max-width: var(--content-max); margin: 0 auto;
+    padding: 24px var(--side-pad) 60px;
+    display:flex; justify-content:space-between; color: var(--fg-dim); font-size: 12px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ============ LIGHTBOX ============ */
+  .lightbox{
+    position: fixed; inset:0; z-index: 100;
+    background: var(--overlay);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display:none;
+    align-items: center; justify-content: center;
+    padding: 40px;
+  }
+  .lightbox.open{ display:flex; }
+  .lb-shell{
+    width: min(1100px, 100%); max-height: calc(100vh - 80px);
+    background: var(--bg-elev); border: 1px solid var(--line);
+    border-radius: 16px; overflow: hidden;
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    box-shadow: 0 24px 80px rgba(0,0,0,.5);
+  }
+  @media (max-width: 860px){ .lb-shell{ grid-template-columns: 1fr; max-height: calc(100vh - 40px); overflow-y:auto;} }
+  .lb-visual{
+    position: relative; background: var(--bg-elev-2); min-height: 400px;
+    aspect-ratio: 4/3;
+  }
+  .lb-visual .art{ position:absolute; inset:0;}
+  .lb-info{
+    padding: 32px 32px 28px; display:flex; flex-direction: column; gap: 18px;
+    min-height: 0; overflow-y: auto;
+  }
+  .lb-cat{
+    display:inline-flex; align-items:center; gap: 6px; align-self: flex-start;
+    padding: 5px 10px; border:1px solid var(--line); border-radius: 6px;
+    font-size: 11px; color: var(--fg-mute); font-weight: 600; letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .lb-title{
+    font-size: 26px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; color: var(--fg);
+  }
+  .lb-sub{ font-size: 14px; color: var(--fg-mute); margin-top: -6px;}
+  .lb-desc{ font-size: 14px; color: var(--fg-mute); line-height: 1.65; }
+  .lb-facts{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; margin-top: auto;
+    padding-top: 20px; border-top: 1px solid var(--line);
+    font-size: 12px;
+  }
+  .lb-facts dt{ color: var(--fg-dim); padding: 6px 0; font-weight: 500;}
+  .lb-facts dd{ color: var(--fg); text-align: right; padding: 6px 0; margin: 0; font-weight: 600;}
+  .lb-close{
+    position: absolute; top: 14px; right: 14px; z-index: 3;
+    width: 36px; height: 36px; border-radius: 999px;
+    background: rgba(0,0,0,.45); color: #fff;
+    display:inline-flex; align-items:center; justify-content:center;
+    backdrop-filter: blur(6px);
+  }
+  .lb-close:hover{ background: rgba(0,0,0,.65);}
+  .lb-close svg{ width: 16px; height: 16px; stroke: currentColor; fill:none; stroke-width:2; stroke-linecap:round;}
+
+  /* Utility */
+  .hidden{ display:none !important; }
+  .kr-only, .en-only{ display: none; }
+  html[data-lang="kr"] .kr-only{ display: initial; }
+  html[data-lang="en"] .en-only{ display: initial; }
+  html[data-lang="kr"] .kr-only.block, html[data-lang="en"] .en-only.block { display: block; }
+
+  /* Mobile header tweaks */
+  @media (max-width: 700px){
+    :root{ --side-pad: 20px; }
+    .nav{ display:none; }
+    .brand .role{ display:none; }
+    .subhead-inner{ flex-direction: column; align-items: flex-start; gap: 12px; }
+    .sort{ align-self: flex-end; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =============== HEADER =============== -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#top" class="brand" aria-label="Kim Eun-jung home">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="name">김은정</span>
+      <span class="role">
+        <span class="kr-only">E2S · 디자인/기획 책임</span>
+        <span class="en-only">E2S · Design &amp; Planning Lead</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="primary">
+      <a href="#work"><span class="kr-only">작업</span><span class="en-only">Work</span></a>
+      <a href="#capabilities"><span class="kr-only">직무 분야</span><span class="en-only">Capabilities</span></a>
+      <a href="#value"><span class="kr-only">대체 불가 가치</span><span class="en-only">Value</span></a>
+      <a href="#about"><span class="kr-only">소개</span><span class="en-only">About</span></a>
+      <a href="#contact"><span class="kr-only">연락처</span><span class="en-only">Contact</span></a>
+    </nav>
+
+    <div class="header-tools">
+      <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
+        <!-- moon (dark active) -->
+        <svg id="iconMoon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <!-- sun -->
+        <svg id="iconSun" viewBox="0 0 24 24" aria-hidden="true" style="display:none">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        </svg>
+      </button>
+
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang="kr" class="active">KR</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- =============== SUBHEADER =============== -->
+<div class="subhead" id="work">
+  <div class="subhead-inner">
+    <div class="cats" role="tablist" id="cats">
+      <!-- rendered by JS -->
+    </div>
+    <div class="sort" id="sortWrap">
+      <button class="sort-btn" id="sortBtn" aria-haspopup="true" aria-expanded="false">
+        <span class="label-key kr-only">정렬</span>
+        <span class="label-key en-only">Sort</span>
+        <span id="sortLabel" class="kr-only">최신순</span>
+        <span id="sortLabelEn" class="en-only">Latest</span>
+        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="sort-menu" id="sortMenu" role="menu">
+        <button data-sort="latest" class="active">
+          <span><span class="kr-only">최신순</span><span class="en-only">Latest</span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =============== WORK GRID =============== -->
+<main class="work-region">
+  <div class="grid" id="grid"></div>
+  <div class="empty hidden" id="empty">
+    <span class="kr-only">해당 카테고리에 작업이 없습니다.</span>
+    <span class="en-only">No works in this category.</span>
+  </div>
+</main>
+
+<!-- =============== CAPABILITIES =============== -->
+<section class="section" id="capabilities">
+  <h2>Capabilities</h2>
+  <p class="cap-intro">
+    <span class="kr-only block">기획자, 웹디자이너, 편집디자이너, UI/UX 디자이너 4인분의 역할을 1인이 수행하며, 브랜딩부터 시스템 기획까지 하나의 톤으로 이어지는 결과물을 만듭니다.</span>
+    <span class="en-only block">I cover the roles of a planner, web designer, editorial designer, and UI/UX designer in one — carrying a single consistent voice from branding through to system planning.</span>
+  </p>
+  <div class="cap-grid" id="capGrid"></div>
+</section>
+
+<!-- =============== VALUE =============== -->
+<section class="section" id="value">
+  <h2><span class="kr-only">대체 불가 직무 가치</span><span class="en-only">Replacement Value</span></h2>
+
+  <div class="value-lede">
+    <div>
+      <p class="value-claim">
+        <span class="kr-only block">"디자이너는 갈 부서가 없다"는 전제,<br>1년을 일해보니 정반대였습니다.</span>
+        <span class="en-only block">"There's nowhere for a designer to move to" — a year in, I found the opposite to be true.</span>
+      </p>
+      <p class="value-body">
+        <span class="kr-only block">문서 시각화, 보고서 구조화, 제안서 작성은 <strong>모든 부서가 매일 필요로 하지만 잘 하는 사람이 드문 역량</strong>입니다. 엑셀·한글·PPT 기반 문서 작업에 능통하기에, 오히려 어느 부서로든 즉시 투입 가능한 핵심 인력입니다.</span>
+        <span class="en-only block">Document visualization, report structuring, and proposal writing are <strong>skills every department needs daily, yet few people do well</strong>. Fluent in Excel, Hangul, and PPT-based document work, I can move into virtually any department as an immediately effective resource.</span>
+      </p>
+      <p class="value-quote" style="margin-top:20px;">
+        <span class="kr-only block">"다른 부서는 일이 없어지면 이동이 쉬운데, 디자이너는 갈 부서가 없지 않겠냐." — 그동안의 내부 우려</span>
+        <span class="en-only block">"Other roles can move around when the work dries up, but where would a designer go?" — a concern raised internally</span>
+      </p>
+    </div>
+    <div>
+      <div class="dept-grid">
+        <div class="dept-card">
+          <h4><span class="kr-only">기술본부</span><span class="en-only">Technical Division</span></h4>
+          <p><span class="kr-only">영입 제안 진행 중 (증명된 역량)</span><span class="en-only">In discussion — capability already proven</span></p>
+        </div>
+        <div class="dept-card">
+          <h4><span class="kr-only">신성장사업부</span><span class="en-only">New Growth Business</span></h4>
+          <p><span class="kr-only">PMS 구축 제안 및 참여</span><span class="en-only">PMS system proposal &amp; participation</span></p>
+        </div>
+        <div class="dept-card">
+          <h4><span class="kr-only">사업관리팀</span><span class="en-only">Business Management</span></h4>
+          <p><span class="kr-only">대표 직속 제안서/보고 지원</span><span class="en-only">Proposal &amp; reporting support</span></p>
+        </div>
+        <div class="dept-card">
+          <h4><span class="kr-only">해외법인 (TCI Inc.)</span><span class="en-only">Overseas (TCI Inc.)</span></h4>
+          <p><span class="kr-only">주 1회 미팅 참관 및 시스템 지원</span><span class="en-only">Weekly meetings &amp; system support</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="cap-intro" style="font-size:14px; color:var(--fg-mute); margin-bottom:16px;">
+    <span class="kr-only block">동일한 업무 범위를 각 전문 직군으로 나눠 채용했다면 필요했을 인력과 2026년 시장 평균 연봉 기준입니다.</span>
+    <span class="en-only block">Based on 2026 market-average salaries, if the same scope of work were split across separate specialist hires.</span>
+  </p>
+
+  <div class="value-table-wrap">
+    <table class="value-table">
+      <thead>
+        <tr>
+          <th><span class="kr-only">담당 업무</span><span class="en-only">Work covered</span></th>
+          <th><span class="kr-only">본래 필요한 직군</span><span class="en-only">Equivalent role</span></th>
+          <th class="num"><span class="kr-only">주니어~3년차 평균 연봉</span><span class="en-only">Junior–3yr avg. salary</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="kr-only">로고/CI, 명함, 사인물, 사원증</span><span class="en-only">Logo/CI, business cards, signage, ID badges</span></td><td><span class="kr-only">그래픽(브랜드) 디자이너</span><span class="en-only">Graphic / Brand Designer</span></td><td class="num">₩29M – 35M</td></tr>
+        <tr><td><span class="kr-only">카달로그, 편집물</span><span class="en-only">Catalogs, editorial</span></td><td><span class="kr-only">편집 디자이너</span><span class="en-only">Editorial Designer</span></td><td class="num">₩29M – 35M</td></tr>
+        <tr><td><span class="kr-only">제안서·회사소개 PPT</span><span class="en-only">Proposals, corporate PPT</span></td><td><span class="kr-only">문서기획/PPT 디자이너</span><span class="en-only">Document / PPT Designer</span></td><td class="num">₩30M – 38M</td></tr>
+        <tr><td><span class="kr-only">영상편집</span><span class="en-only">Video editing</span></td><td><span class="kr-only">영상편집자</span><span class="en-only">Video Editor</span></td><td class="num">₩30M – 38M</td></tr>
+        <tr><td><span class="kr-only">홈페이지 (한국/미국)</span><span class="en-only">Websites (KR/US)</span></td><td><span class="kr-only">웹 디자이너</span><span class="en-only">Web Designer</span></td><td class="num">₩32M – 40M</td></tr>
+        <tr><td><span class="kr-only">HMI 시스템 UI</span><span class="en-only">HMI system UI</span></td><td><span class="kr-only">UI/UX 디자이너</span><span class="en-only">UI/UX Designer</span></td><td class="num">₩30M – 36.5M</td></tr>
+        <tr><td><span class="kr-only">미국 법인 업무 지원</span><span class="en-only">US entity support</span></td><td><span class="kr-only">해외 마케팅/바이링구얼 디자이너</span><span class="en-only">Global Marketing / Bilingual Designer</span></td><td class="num">₩32M – 40M</td></tr>
+        <tr class="total"><td colspan="2"><span class="kr-only">7개 직군 합산 시 예상 연간 인건비</span><span class="en-only">Combined cost across 7 roles</span></td><td class="num">₩210M – 250M</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="value-summary">
+    <h4><span class="kr-only">💡 요약</span><span class="en-only">💡 Summary</span></h4>
+    <p>
+      <span class="kr-only block">같은 결과물을 위해 7명을 각각 채용했다면 연간 2.5억 원 이상이 들었을 일을, 10년 차 책임급 인력 <strong>1명이 시스템을 기획하고 리드하며 수행</strong>하고 있습니다. 회사가 확정적으로 얻는 비용 마진을 바탕으로 정규직 전환과 합당한 연봉 논의를 제안드립니다.</span>
+      <span class="en-only block">Hiring 7 specialists for the same output would cost ₩250M+ annually. Instead, <strong>one 10-year lead-level hire plans, leads, and executes</strong> this entire scope — a clear, quantifiable cost margin that supports a conversion to full-time status and a fair salary discussion.</span>
+    </p>
+  </div>
+</section>
+
+<!-- =============== ABOUT =============== -->
+<section class="section" id="about">
+  <h2>About</h2>
+  <div class="about">
+    <div>
+      <p>
+        <span class="kr-only block">기획부터 시스템까지 다루는 디자이너, 김은정입니다.</span>
+        <span class="en-only block">I'm Kim Eun-jung — a designer who works from planning through to system design.</span>
+      </p>
+      <p class="mute">
+        <span class="kr-only block">브랜딩, 웹/디지털, HMI UI/UX, 문서·편집 디자인, 영상·굿즈, 공간 사이니지까지 — 단순한 디자인을 넘어 회사의 비즈니스를 시각화하고 시스템화하는 데 집중합니다. E2S 입사 후 1년간 기획자·웹디자이너·편집디자이너·UI/UX 디자이너 4인분의 역할을 1인 체제로 수행하며 전사 브랜딩을 완성했습니다.</span>
+        <span class="en-only block">From branding and web/digital to HMI UI/UX, document &amp; editorial design, video &amp; merchandise, and space signage — I focus on visualizing and systemizing the business itself, not just producing designs. Over the past year at E2S, I've single-handedly covered the roles of planner, web designer, editorial designer, and UI/UX designer to complete company-wide branding.</span>
+      </p>
+    </div>
+    <dl class="meta-list">
+      <dt><span class="kr-only">소속</span><span class="en-only">Company</span></dt>
+      <dd>E2S <span class="kr-only">(책임)</span><span class="en-only">(Lead)</span></dd>
+      <dt><span class="kr-only">전문 분야</span><span class="en-only">Focus</span></dt>
+      <dd><span class="kr-only">브랜딩 · UI/UX · 문서기획</span><span class="en-only">Branding · UI/UX · Doc. Planning</span></dd>
+      <dt><span class="kr-only">경력</span><span class="en-only">Experience</span></dt>
+      <dd><span class="kr-only">10년 차 (프리랜서 포함)</span><span class="en-only">10 years (incl. freelance)</span></dd>
+      <dt><span class="kr-only">재직 기간</span><span class="en-only">Tenure at E2S</span></dt>
+      <dd>2025.09 — <span class="kr-only">현재</span><span class="en-only">Present</span></dd>
+    </dl>
+  </div>
+</section>
+
+<!-- =============== CONTACT =============== -->
+<section class="section" id="contact">
+  <h2>Contact</h2>
+  <div class="contact">
+    <div class="big">
+      <a href="mailto:your-email@e2s.co.kr">your-email@e2s.co.kr</a>
+    </div>
+    <div class="links">
+      <a href="#" target="_blank" rel="noreferrer"><span class="kr-only">사내 내선</span><span class="en-only">Ext.</span> 0000</a>
+      <a href="#" target="_blank" rel="noreferrer">Notefolio</a>
+      <a href="#" target="_blank" rel="noreferrer">Behance</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>© 2026 Kim Eun-jung. All rights reserved.</span>
+  <span>E2S · Design &amp; Planning</span>
+</footer>
+
+<!-- =============== LIGHTBOX =============== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <div class="lb-shell">
+    <div class="lb-visual">
+      <div class="art" id="lbArt"></div>
+      <button class="lb-close" id="lbClose" aria-label="Close">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="lb-info">
+      <span class="lb-cat" id="lbCat">Branding</span>
+      <div>
+        <div class="lb-title" id="lbTitle">Project title</div>
+        <div class="lb-sub" id="lbSub">Client · 2026</div>
+      </div>
+      <p class="lb-desc" id="lbDesc"></p>
+      <dl class="lb-facts">
+        <dt><span class="kr-only">역할</span><span class="en-only">Role</span></dt>
+        <dd id="lbRole">Design, Art Direction</dd>
+        <dt><span class="kr-only">연도</span><span class="en-only">Year</span></dt>
+        <dd id="lbYear">2026</dd>
+        <dt><span class="kr-only">카테고리</span><span class="en-only">Category</span></dt>
+        <dd id="lbCatKo">브랜딩/편집</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   DATA
+========================================================= */
+const CATEGORIES = [
+  { id: 'all',    kr: '전체',           en: 'All' },
+  { id: 'brand',  kr: '브랜딩/CI',      en: 'Branding / CI' },
+  { id: 'web',    kr: '웹/디지털',      en: 'Web / Digital' },
+  { id: 'uiux',   kr: 'UI/UX',          en: 'UI/UX' },
+  { id: 'doc',    kr: '문서/편집',      en: 'Document / Editorial' },
+  { id: 'space',  kr: '공간/사이니지',  en: 'Space / Signage' },
+  { id: 'media',  kr: '영상/굿즈',      en: 'Video / Goods' },
+];
+
+// Real E2S work, 2025.09 – present
+const WORKS = [
+  { id:'w14', cat:'uiux',  kr:{t:'TCI PMS 시스템 기획',           s:'TCI Inc. · 시스템 설계'},        en:{t:'TCI PMS system planning',        s:'TCI Inc. · System design'},        year:'2026', art:'a', role:{kr:'시스템 기획, UI/UX', en:'System planning, UI/UX'} },
+  { id:'w13', cat:'web',   kr:{t:'TCI Inc. 미국 법인 웹사이트',   s:'TCI Inc. · 해외법인 웹'},        en:{t:'TCI Inc. US site',               s:'TCI Inc. · Overseas web'},         year:'2026', art:'b', role:{kr:'웹디자인, 가이드라인', en:'Web design, guidelines'} },
+  { id:'w12', cat:'media', kr:{t:'전사 굿즈 기획 (달력·시계)',    s:'E2S · 사내 굿즈'},               en:{t:'Corporate goods (calendar/clock)', s:'E2S · Company goods'},           year:'2026', art:'c', role:{kr:'그래픽, 굿즈 기획', en:'Graphic, goods planning'} },
+  { id:'w11', cat:'space', kr:{t:'안전 피난 안내도 및 사인물',    s:'E2S · 사내 사이니지'},           en:{t:'Evacuation map & signage',        s:'E2S · Interior signage'},          year:'2025', art:'d', role:{kr:'사이니지, 편집', en:'Signage, editorial'} },
+  { id:'w10', cat:'uiux',  kr:{t:'HMI 시스템 UI 개선',            s:'E2S · 엔지니어링 UI'},           en:{t:'HMI system UI improvement',       s:'E2S · Engineering UI'},            year:'2025', art:'e', role:{kr:'UI/UX 설계', en:'UI/UX design'} },
+  { id:'w09', cat:'doc',   kr:{t:'파라곤 EMS 특화 제안서',        s:'Paragon · 영업 제안서'},         en:{t:'Paragon EMS proposal',            s:'Paragon · Sales proposal'},        year:'2025', art:'f', role:{kr:'문서기획, 편집디자인', en:'Doc. planning, editorial'} },
+  { id:'w08', cat:'doc',   kr:{t:'E2S 공식 카달로그',             s:'E2S · 제품 카달로그'},           en:{t:'E2S official catalog',            s:'E2S · Product catalog'},           year:'2025', art:'g', role:{kr:'편집디자인', en:'Editorial design'} },
+  { id:'w07', cat:'doc',   kr:{t:'회사소개서 디자인',             s:'E2S · 기업소개서'},              en:{t:'Company profile deck',            s:'E2S · Corporate profile'},         year:'2025', art:'h', role:{kr:'문서기획, PPT디자인', en:'Doc. planning, PPT design'} },
+  { id:'w06', cat:'web',   kr:{t:'E2S 공식 홈페이지 구축',        s:'E2S · 웹사이트'},                en:{t:'E2S official website',            s:'E2S · Website'},                   year:'2025', art:'a', role:{kr:'웹디자인, FTP 직접관리', en:'Web design, FTP management'} },
+  { id:'w05', cat:'media', kr:{t:'기업 홍보영상 편집',            s:'E2S · 프로모션 영상'},           en:{t:'Corporate promo video edit',      s:'E2S · Promotional video'},         year:'2025', art:'b', role:{kr:'영상편집', en:'Video editing'} },
+  { id:'w04', cat:'brand', kr:{t:'전자서명 및 사원증',            s:'E2S · 오피스 시스템'},           en:{t:'E-signature & ID badges',         s:'E2S · Office system'},             year:'2025', art:'c', role:{kr:'브랜딩 시스템', en:'Branding system'} },
+  { id:'w03', cat:'brand', kr:{t:'명함 및 사내 사인 시스템',      s:'E2S · 오피스 아이덴티티'},       en:{t:'Business cards & signage system', s:'E2S · Office identity'},           year:'2025', art:'d', role:{kr:'브랜딩, 편집', en:'Branding, Editorial'} },
+  { id:'w02', cat:'space', kr:{t:'로고 간판 및 실내 사인물',      s:'E2S · 공간 브랜딩'},             en:{t:'Logo signage & interior signage', s:'E2S · Space branding'},            year:'2025', art:'e', role:{kr:'공간 브랜딩', en:'Space branding'} },
+  { id:'w01', cat:'brand', kr:{t:'E2S 로고 개발 및 상표출원',     s:'E2S · CI/BI'},                   en:{t:'E2S logo & trademark filing',     s:'E2S · CI/BI'},                     year:'2025', art:'f', role:{kr:'브랜딩, 상표출원', en:'Branding, Trademark'} },
+];
+
+// Capability domains — what departments/roles this covers
+const CAPABILITIES = [
+  { no:'01', kr:{t:'브랜딩 / CI 시스템', d:'로고, 상표출원, 명함, 사원증, 전자서명 등 전사 통합 아이덴티티 설계'}, en:{t:'Branding / CI System', d:'Logo, trademark filing, business cards, ID badges, e-signatures — full identity system'}, tags:['CI/BI','Trademark'] },
+  { no:'02', kr:{t:'웹 / 디지털 플랫폼', d:'한국·미국 법인 공식 웹사이트 구축, FTP 직접 관리, 디자인 가이드라인 수립'}, en:{t:'Web / Digital Platform', d:'KR/US corporate websites, direct FTP management, design guideline authoring'}, tags:['Web','Guideline'] },
+  { no:'03', kr:{t:'UI/UX (HMI 시스템)', d:'복잡한 제어 시스템의 UI/UX 설계, PMS 시스템 기획 및 미국 팀 협업'}, en:{t:'UI/UX (HMI Systems)', d:'UI/UX for complex control systems, PMS planning with the US team'}, tags:['UI/UX','HMI'] },
+  { no:'04', kr:{t:'문서 / 편집 디자인', d:'제안서, 회사소개서, 카달로그 등 엑셀·한글·PPT 기반 문서 시각화'}, en:{t:'Document / Editorial', d:'Proposals, profiles, catalogs — visualizing Excel/Hangul/PPT-based documents'}, tags:['Proposal','PPT'] },
+  { no:'05', kr:{t:'공간 / 사이니지', d:'사내 사인물, 로고 간판, 안전 피난 안내도 등 공간 브랜딩 총괄'}, en:{t:'Space / Signage', d:'Interior signage, logo signs, evacuation maps — end-to-end space branding'}, tags:['Signage','Interior'] },
+  { no:'06', kr:{t:'영상 / 굿즈 기획', d:'기업 홍보영상 편집, 달력·시계 등 사내 굿즈 상품 기획·제작'}, en:{t:'Video / Merchandise', d:'Corporate promo video editing, planning & producing company goods'}, tags:['Video','Goods'] },
+  { no:'07', kr:{t:'해외법인 지원', d:'미국 TCI Inc. 주간 미팅 참관, 문제 정의부터 시스템 해결안까지 설계'}, en:{t:'Overseas Entity Support', d:'Weekly meetings with TCI Inc. (US), from problem definition to system solutions'}, tags:['Global','TCI Inc.'] },
+];
+
+/* =========================================================
+   STATE
+========================================================= */
+const state = {
+  cat: 'all',
+  sort: 'latest',
+  lang: localStorage.getItem('eundi.lang') || 'kr',
+  theme: localStorage.getItem('eundi.theme') || 'dark',
+};
+
+/* =========================================================
+   HELPERS
+========================================================= */
+function t(node){ return state.lang === 'kr' ? node.kr : node.en; }
+function catLabel(id){
+  const c = CATEGORIES.find(c => c.id === id);
+  return state.lang === 'kr' ? c.kr : c.en;
+}
+function filterAndSort(){
+  let list = WORKS.slice();
+  if (state.cat !== 'all') list = list.filter(w => w.cat === state.cat);
+  if (state.sort === 'latest'){
+    list.sort((a,b) => Number(b.year) - Number(a.year) || b.id.localeCompare(a.id));
+  }
+  return list;
+}
+function countFor(catId){
+  return catId === 'all' ? WORKS.length : WORKS.filter(w => w.cat === catId).length;
+}
+
+/* =========================================================
+   RENDER: CATEGORIES
+========================================================= */
+function renderCats(){
+  const el = document.getElementById('cats');
+  el.innerHTML = CATEGORIES.map(c => {
+    const label = state.lang === 'kr' ? c.kr : c.en;
+    const pressed = c.id === state.cat ? 'true' : 'false';
+    return `<button class="cat" role="tab" aria-pressed="${pressed}" data-cat="${c.id}">
+      <span class="label">${label}</span>
+      <span class="count">${countFor(c.id)}</span>
+    </button>`;
+  }).join('');
+  el.querySelectorAll('.cat').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.cat = btn.dataset.cat;
+      renderCats();
+      renderGrid();
+    });
+  });
+}
+
+/* =========================================================
+   RENDER: CAPABILITIES
+========================================================= */
+function renderCaps(){
+  const el = document.getElementById('capGrid');
+  if (!el) return;
+  el.innerHTML = CAPABILITIES.map(c => {
+    const tx = state.lang === 'kr' ? c.kr : c.en;
+    return `
+    <div class="cap-card">
+      <div class="cap-no">${c.no}</div>
+      <h3>${tx.t}</h3>
+      <p>${tx.d}</p>
+      <div class="cap-tags">${c.tags.map(t => `<span class="cap-tag">${t}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+/* =========================================================
+   RENDER: GRID
+========================================================= */
+function renderGrid(){
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  const list = filterAndSort();
+  if (!list.length){
+    grid.innerHTML = ''; empty.classList.remove('hidden');
+    return;
+  }
+  empty.classList.add('hidden');
+  grid.innerHTML = list.map(w => {
+    const tx = t(w);
+    const initial = (state.lang === 'kr' ? w.kr.t : w.en.t).trim().charAt(0).toUpperCase();
+    return `
+    <article class="card" data-id="${w.id}" tabindex="0">
+      <div class="thumb">
+        <div class="art art--${w.art}"><span class="mark">${initial}</span></div>
+        <div class="overlay">
+          <div class="meta">
+            <div class="t">${tx.t}</div>
+            <div class="s">${catLabel(w.cat)} · ${w.year}</div>
+          </div>
+        </div>
+      </div>
+      <div class="caption">
+        <div class="l">
+          <div class="title">${tx.t}</div>
+          <div class="sub">${tx.s}</div>
+        </div>
+        <div class="r">${w.year}</div>
+      </div>
+    </article>`;
+  }).join('');
+
+  grid.querySelectorAll('.card').forEach(c => {
+    c.addEventListener('click', () => openLightbox(c.dataset.id));
+    c.addEventListener('keydown', e => { if (e.key === 'Enter') openLightbox(c.dataset.id); });
+  });
+}
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+function openLightbox(id){
+  const w = WORKS.find(x => x.id === id);
+  if (!w) return;
+  const tx = t(w);
+  document.getElementById('lbArt').className = 'art art--' + w.art;
+  document.getElementById('lbArt').innerHTML = `<span class="mark" style="font-size:120px;">${(state.lang==='kr'?w.kr.t:w.en.t).trim().charAt(0).toUpperCase()}</span>`;
+  document.getElementById('lbCat').textContent = catLabel(w.cat);
+  document.getElementById('lbTitle').textContent = tx.t;
+  document.getElementById('lbSub').textContent = tx.s + ' · ' + w.year;
+  document.getElementById('lbDesc').textContent = state.lang === 'kr'
+    ? '상세 이미지는 실제 프로젝트 파일로 대체됩니다. 이 팝업에서는 프로젝트 개요, 역할, 협업 파트너 등의 정보가 노출됩니다.'
+    : 'This preview uses placeholder art — real images can be swapped in. Full case details, credits and collaborators appear here.';
+  document.getElementById('lbRole').textContent = state.lang === 'kr' ? w.role.kr : w.role.en;
+  document.getElementById('lbYear').textContent = w.year;
+  document.getElementById('lbCatKo').textContent = catLabel(w.cat);
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target.id === 'lightbox') closeLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+/* =========================================================
+   SORT DROPDOWN (single option now, but architected for more)
+========================================================= */
+const sortWrap = document.getElementById('sortWrap');
+document.getElementById('sortBtn').addEventListener('click', e => {
+  e.stopPropagation();
+  sortWrap.classList.toggle('open');
+  document.getElementById('sortBtn').setAttribute('aria-expanded', sortWrap.classList.contains('open'));
+});
+document.addEventListener('click', () => sortWrap.classList.remove('open'));
+document.getElementById('sortMenu').querySelectorAll('button').forEach(b => {
+  b.addEventListener('click', () => {
+    document.getElementById('sortMenu').querySelectorAll('button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.sort = b.dataset.sort;
+    renderGrid();
+    sortWrap.classList.remove('open');
+  });
+});
+
+/* =========================================================
+   THEME
+========================================================= */
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', state.theme);
+  document.getElementById('iconMoon').style.display = state.theme === 'dark' ? '' : 'none';
+  document.getElementById('iconSun').style.display  = state.theme === 'dark' ? 'none' : '';
+  localStorage.setItem('eundi.theme', state.theme);
+}
+document.getElementById('themeToggle').addEventListener('click', () => {
+  state.theme = state.theme === 'dark' ? 'light' : 'dark';
+  applyTheme();
+});
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+function applyLang(){
+  document.documentElement.setAttribute('data-lang', state.lang);
+  document.documentElement.setAttribute('lang', state.lang === 'kr' ? 'ko' : 'en');
+  document.querySelectorAll('.lang-toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === state.lang);
+  });
+  localStorage.setItem('eundi.lang', state.lang);
+  renderCats();
+  renderGrid();
+  renderCaps();
+}
+document.querySelectorAll('.lang-toggle button').forEach(b => {
+  b.addEventListener('click', () => {
+    state.lang = b.dataset.lang;
+    applyLang();
+  });
+});
+
+/* =========================================================
+   INIT
+========================================================= */
+applyTheme();
+applyLang(); // triggers cats + grid render
+</script>
+</body>
+</html>
