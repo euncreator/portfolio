@@ -614,7 +614,7 @@
   <h2>Contact</h2>
   <div class="contact">
     <div class="big">
-      <a href="mailto: eun.creator@gmail.com">eun.creator@gmail.com</a>
+      <a href="mailto:eun.creator@gmail.com">eun.creator@gmail.com</a>
     </div>
     <div class="links">
       <a href="https://github.com/euncreator" target="_blank" rel="noreferrer">GitHub</a>
@@ -661,30 +661,100 @@
    DATA
 ========================================================= */
 const CATEGORIES = [
-  { id: 'all',    kr: '전체',           en: 'All' },
+  { id: 'all',    kr: '전체',          en: 'All' },
   { id: 'brand',  kr: '브랜딩/CI',      en: 'Branding / CI' },
   { id: 'web',    kr: '웹/디지털',      en: 'Web / Digital' },
   { id: 'uiux',   kr: 'UI/UX',          en: 'UI/UX' },
   { id: 'doc',    kr: '문서/편집',      en: 'Document / Editorial' },
-  { id: 'space',  kr: '공간',           en: 'Space / Signage' },
+  { id: 'space',  kr: '공간',          en: 'Space / Signage' },
   { id: 'media',  kr: '영상/굿즈',      en: 'Video / Goods' },
 ];
 
 const WORKS = [
-  { id:'w14', cat:'uiux',  kr:{t:'PMS 시스템 기획',           s:'PMS · 시스템 설계'},        en:{t:'TCI PMS system planning',        s:'TCI Inc. · System design'},        year:'2026', img:'images/w14.jpg', role:{kr:'시스템 기획, UI/UX', en:'System planning, UI/UX'} },
-  { id:'w13', cat:'web',   kr:{t:'TCI Inc. 미국 법인 웹사이트',   s:'TCI Inc. · 해외법인 웹'},        en:{t:'TCI Inc. US site',               s:'TCI Inc. · Overseas web'},         year:'2026', img:'images/w13.jpg', role:{kr:'웹디자인, 가이드라인', en:'Web design, guidelines'} },
-  { id:'w12', cat:'media', kr:{t:'전사 굿즈 기획 (달력·시계)',    s:'E2S · 사내 굿즈'},               en:{t:'Corporate goods (calendar/clock)', s:'E2S · Company goods'},           year:'2026', img:'images/w12.jpg', role:{kr:'그래픽, 굿즈 기획', en:'Graphic, goods planning'} },
-  { id:'w11', cat:'brand', kr:{t:'TCI 전용 폰트 시스템 제작',    s:'TCI Inc. · 전용 폰트 개발'},      en:{t:'TCI Custom Font System',          s:'TCI Inc. · Brand Font'},           year:'2025', img:'images/w11.jpg', role:{kr:'폰트 디자인, 브랜드 가이드라인', en:'Font design, Brand Guidelines'} },
-  { id:'w10', cat:'uiux',  kr:{t:'HMI 시스템 UI',             s:'E2S · 엔지니어링 UI'},           en:{t:'HMI system UI improvement',       s:'E2S · Engineering UI'},            year:'2026', img:'images/w10.jpg', role:{kr:'UI/UX 설계', en:'UI/UX design'} },
-  { id:'w09', cat:'doc',   kr:{t:'파라곤 EMS 특화 제안서',        s:'Paragon · 영업 제안서'},         en:{t:'Paragon EMS proposal',            s:'Paragon · Sales proposal'},        year:'2025', img:'images/w09.jpg', role:{kr:'문서기획, 편집디자인', en:'Doc. planning, editorial'} },
-  { id:'w08', cat:'doc',   kr:{t:'E2S 공식 카달로그',             s:'E2S · 제품 카달로그'},           en:{t:'E2S official catalog',            s:'E2S · Product catalog'},           year:'2025', img:'images/w08.jpg', role:{kr:'편집디자인', en:'Editorial design'} },
-  { id:'w07', cat:'doc',   kr:{t:'회사소개서 디자인',             s:'E2S · 기업소개서'},              en:{t:'Company profile deck',            s:'E2S · Corporate profile'},         year:'2026', img:'images/w07.jpg', role:{kr:'문서기획, PPT디자인', en:'Doc. planning, PPT design'} },
-  { id:'w06', cat:'web',   kr:{t:'E2S 공식 홈페이지 구축',        s:'E2S · 웹사이트'},                en:{t:'E2S official website',            s:'E2S · Website'},                   year:'2026', img:'images/w06.jpg', role:{kr:'웹디자인, FTP 직접관리', en:'Web design, FTP management'} },
-  { id:'w05', cat:'media', kr:{t:'기업 홍보영상 편집',            s:'E2S · 프로모션 영상'},           en:{t:'Corporate promo video edit',      s:'E2S · Promotional video'},         year:'2025', img:'images/w05.jpg', role:{kr:'영상편집', en:'Video editing'} },
-  { id:'w04', cat:'brand', kr:{t:'전자서명 및 사원증',            s:'E2S · 오피스 시스템'},           en:{t:'E-signature & ID badges',         s:'E2S · Office system'},             year:'2025', img:'images/w04.jpg', role:{kr:'브랜딩 시스템', en:'Branding system'} },
-  { id:'w03', cat:'brand', kr:{t:'명함 및 사내 사인 시스템',      s:'E2S · 오피스 아이덴티티'},       en:{t:'Business cards & signage system', s:'E2S · Office identity'},           year:'2025', img:'images/w03.jpg', role:{kr:'브랜딩, 편집', en:'Branding, Editorial'} },
-  { id:'w02', cat:'space', kr:{t:'명동 롯데 팝업스토어 (유기견보호소 지원)', s:'E2S · 팝업스토어 브랜딩 & 공간'}, en:{t:'Myeongdong Lotte Pop-up Store', s:'E2S · Pop-up Branding & Space'}, year:'2025', img:'images/w02.jpg', role:{kr:'공간 브랜딩, 팝업 기획', en:'Space Branding, Pop-up Planning'} },
-  { id:'w01', cat:'brand', kr:{t:'E2S 로고 개발 및 상표출원',     s:'E2S · CI/BI'},                   en:{t:'E2S logo & trademark filing',     s:'E2S · CI/BI'},                     year:'2026', img:'images/w01.jpg', role:{kr:'브랜딩, 상표출원', en:'Branding, Trademark'} },
+  { 
+    id:'w14', cat:'uiux', 
+    kr:{ t:'PMS 시스템 기획', s:'PMS · 시스템 설계', desc:'발전/제어 현장의 에너지 관리 효율성을 극대화하기 위해 다량의 노드 데이터와 상태를 직관적으로 모니터링할 수 있도록 UI/UX 구조를 정밀 설계했습니다.' }, 
+    en:{ t:'TCI PMS system planning', s:'TCI Inc. · System design', desc:'Designed precise UI/UX structure to intuitively monitor multi-node energy data and device statuses for control site operations.' }, 
+    year:'2026', img:'images/w14.jpg', role:{kr:'시스템 기획, UI/UX', en:'System planning, UI/UX'} 
+  },
+  { 
+    id:'w13', cat:'web', 
+    kr:{ t:'TCI Inc. 미국 법인 웹사이트', s:'TCI Inc. · 해외법인 웹', desc:'미국 현지 시장 반응과 글로벌 파트너십을 고려하여 신뢰감 있는 톤앤매너로 제작된 해외 법인 공식 웹사이트입니다.' }, 
+    en:{ t:'TCI Inc. US site', s:'TCI Inc. · Overseas web', desc:'Official global entity website built with a modern, trustworthy aesthetic tailored for US market partners.' }, 
+    year:'2026', img:'images/w13.jpg', role:{kr:'웹디자인, 가이드라인', en:'Web design, guidelines'} 
+  },
+  { 
+    id:'w12', cat:'media', 
+    kr:{ t:'전사 굿즈 기획 (달력·시계)', s:'사내 굿즈', desc:'브랜드 아이덴티티를 일상적인 오피스 아이템에 녹여내어 임직원의 소속감과 브랜드 가치를 동시에 높였습니다.' }, 
+    en:{ t:'Corporate goods (calendar/clock)', s:'E2S · Company goods', desc:'Infused corporate identity into everyday office essentials to boost team pride and internal brand experience.' }, 
+    year:'2026', img:'images/w12.jpg', role:{kr:'그래픽, 굿즈 기획', en:'Graphic, goods planning'} 
+  },
+  { 
+    id:'w11', cat:'brand', 
+    kr:{ t:'TCI 전용 폰트 시스템 제작', s:'TCI Inc. · 전용 폰트 개발', desc:'디스플레이 및 UI 환경에서의 가독성을 극대화하기 위해 모듈 구조를 정격화한 브랜드 익스클루시브 서체 시스템입니다.' }, 
+    en:{ t:'TCI Custom Font System', s:'TCI Inc. · Brand Font', desc:'Custom brand typeface system with standardized module structures optimized for display and UI legibility.' }, 
+    year:'2025', img:'images/w11.jpg', role:{kr:'폰트 디자인, 브랜드 가이드라인', en:'Font design, Brand Guidelines'} 
+  },
+  { 
+    id:'w10', cat:'uiux', 
+    kr:{ t:'HMI 시스템 UI', s:'E2S · 엔지니어링 UI', desc:'엔지니어의 오작동 위험을 낮추고 긴급 상황 시 대처 속도를 높이기 위한 고대비·고시성 중심의 HMI 화면 규격을 설계했습니다.' }, 
+    en:{ t:'HMI system UI improvement', s:'E2S · Engineering UI', desc:'Designed high-contrast, high-legibility HMI layouts to reduce operator error and improve emergency response speed.' }, 
+    year:'2026', img:'images/w10.jpg', role:{kr:'UI/UX 설계', en:'UI/UX design'} 
+  },
+  { 
+    id:'w09', cat:'doc', 
+    kr:{ t:'EMS 특화 제안서', s:'Paragon · 영업 제안서', desc:'복잡한 엔지니어링 기술 스펙을 인포그래픽과 체계적인 목차 구조로 정보 시각화하여 수주 기여도를 극대화했습니다.' }, 
+    en:{ t:'Paragon EMS proposal', s:'Paragon · Sales proposal', desc:'Visualized complex technical specifications into structured infographics to significantly improve pitch effectiveness.' }, 
+    year:'2025', img:'images/w09.jpg', role:{kr:'문서기획, 편집디자인', en:'Doc. planning, editorial'} 
+  },
+  { 
+    id:'w08', cat:'doc', 
+    kr:{ t:'E2S 공식 카달로그', s:'제품 카달로그', desc:'기업 핵심 제품군과 기술 로드맵을 신뢰도 높은 그래픽과 그리드 시스템으로 재구성한 국/영문 카탈로그입니다.' }, 
+    en:{ t:'E2S official catalog', s:'E2S · Product catalog', desc:'Reconstructed key product lines and tech roadmaps using structured grid systems for global distribution.' }, 
+    year:'2025', img:'images/w08.jpg', role:{kr:'편집디자인', en:'Editorial design'} 
+  },
+  { 
+    id:'w07', cat:'doc', 
+    kr:{ t:'회사소개서 디자인', s:'기업소개서', desc:'비즈니스 비전과 기술적 우수성이 한눈에 들어오도록 슬라이드 구조와 다이어그램을 최적화한 프리젠테이션 덱입니다.' }, 
+    en:{ t:'Company profile deck', s:'E2S · Corporate profile', desc:'Optimized presentation decks with custom diagrams to convey company vision and engineering strengths effortlessly.' }, 
+    year:'2026', img:'images/w07.jpg', role:{kr:'문서기획, PPT디자인', en:'Doc. planning, PPT design'} 
+  },
+  { 
+    id:'w06', cat:'web', 
+    kr:{ t:'E2S 공식 홈페이지 구축', s:'E2S · 웹사이트', desc:'모던하고 정갈한 Pretendard 폰트 체계 기반으로 브랜드 가치를 선명히 전달하고 FTP 배포까지 직접 운용·관리한 프로젝트입니다.' }, 
+    en:{ t:'E2S official website', s:'E2S · Website', desc:'Modern website built on precise typography systems, directly managed from design execution to server deployment.' }, 
+    year:'2026', img:'images/w06.jpg', role:{kr:'웹디자인, FTP 직접관리', en:'Web design, FTP management'} 
+  },
+  { 
+    id:'w05', cat:'media', 
+    kr:{ t:'제품 홍보 영상', s:'E2S 프로모션 영상', desc:'제품의 동작 원리와 핵심 제어 기술을 3D/Motion 그래픽 모션으로 시각화하여 메시지 전달력을 강화했습니다.' }, 
+    en:{ t:'Corporate promo video edit', s:'E2S · Promotional video', desc:'Visualized product mechanics and key control tech using motion graphics to strengthen market impact.' }, 
+    year:'2025', img:'images/w05.jpg', role:{kr:'영상편집', en:'Video editing'} 
+  },
+  { 
+    id:'w04', cat:'brand', 
+    kr:{ t:'사원증 및 오피스 브랜딩', s:'E2S · 오피스 시스템', desc:'사내 보안 아이템과 사원증 디자인에 기업 CI 요소를 일관성 있게 적용하여 정돈된 기업 문화를 형성했습니다.' }, 
+    en:{ t:'E-signature & ID badges', s:'E2S · Office system', desc:'Applied corporate CI elements seamlessly to ID badges and office Touchpoints to establish unified company culture.' }, 
+    year:'2025', img:'images/w04.jpg', role:{kr:'브랜딩 시스템', en:'Branding system'} 
+  },
+  { 
+    id:'w03', cat:'brand', 
+    kr:{ t:'명함 및 서식 디자인', s:'오피스 아이덴티티', desc:'다양한 직무와 명함 형태에서도 일관된 브랜드 경험을 줄 수 있도록 엄격한 레이아웃 가이드라인을 규격화했습니다.' }, 
+    en:{ t:'Business cards & signage system', s:'E2S · Office identity', desc:'Standardized layout guidelines ensuring consistent brand experience across all stationery and business cards.' }, 
+    year:'2025', img:'images/w03.jpg', role:{kr:'브랜딩, 편집', en:'Branding, Editorial'} 
+  },
+  { 
+    id:'w02', cat:'space', 
+    kr:{ t:'명동 롯데 팝업스토어', s:'E2S · 팝업스토어 브랜딩 & 공간', desc:'유기견 보호소 지원 캠페인 맥락에 맞춰 방문객 동선과 체험 포인트를 고려한 감성적인 공간 및 굿즈를 기획했습니다.' }, 
+    en:{ t:'Myeongdong Lotte Pop-up Store', s:'E2S · Pop-up Branding & Space', desc:'Designed an emotional spatial layout and eco-goods experience aligned with a shelter support campaign.' }, 
+    year:'2025', img:'images/w02.jpg', role:{kr:'공간 브랜딩, 팝업 기획', en:'Space Branding, Pop-up Planning'} 
+  },
+  { 
+    id:'w01', cat:'brand', 
+    kr:{ t:'E2S 로고 개발 및 상표출원', s:'E2S · CI/BI', desc:'기업의 차세대 기술적 비전을 대표하는 심볼 및 로고타입을 신규 개발하고 무형 자산 보호를 위한 상표 출원까지 완료했습니다.' }, 
+    en:{ t:'E2S logo & trademark filing', s:'E2S · CI/BI', desc:'Developed next-gen corporate identity symbols and managed formal trademark filings to protect visual assets.' }, 
+    year:'2026', img:'images/w01.jpg', role:{kr:'브랜딩, 상표출원', en:'Branding, Trademark'} 
+  },
 ];
 
 const CAPABILITIES = [
@@ -816,9 +886,7 @@ function openLightbox(id){
   document.getElementById('lbCat').textContent = catLabel(w.cat);
   document.getElementById('lbTitle').textContent = tx.t;
   document.getElementById('lbSub').textContent = tx.s + ' · ' + w.year;
-  document.getElementById('lbDesc').textContent = state.lang === 'kr'
-    ? '프로젝트의 핵심 문제 정의, 기획 단계의 주요 의도, 그리고 실제 인터페이스 및 브랜드 적용 결과입니다.'
-    : 'Core problem definition, main planning intent, and final interface/brand execution results.';
+  document.getElementById('lbDesc').textContent = tx.desc || '';
   document.getElementById('lbRole').textContent = state.lang === 'kr' ? w.role.kr : w.role.en;
   document.getElementById('lbYear').textContent = w.year;
   document.getElementById('lbCatKo').textContent = catLabel(w.cat);
