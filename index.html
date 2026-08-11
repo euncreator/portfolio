@@ -55,6 +55,7 @@
   }
 
   *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
   html, body{ margin:0; padding:0; }
   html, body{
     background: var(--bg);
@@ -145,6 +146,7 @@
     backdrop-filter: saturate(1.2) blur(14px);
     -webkit-backdrop-filter: saturate(1.2) blur(14px);
     border-bottom: 1px solid var(--line);
+    scroll-margin-top: var(--header-h);
   }
   .subhead-inner{
     max-width: var(--content-max); margin: 0 auto;
@@ -353,6 +355,7 @@
     max-width: var(--content-max); margin: 0 auto;
     padding: 60px var(--side-pad);
     border-top: 1px solid var(--line);
+    scroll-margin-top: calc(var(--header-h) + var(--subhead-h));
   }
   .section h2{
     font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
@@ -493,7 +496,7 @@
 <!-- =============== HEADER =============== -->
 <header class="header">
   <div class="header-inner">
-    <a href="#top" class="brand" aria-label="Eundi home">
+    <a href="#work" class="brand" aria-label="Eundi home">
       <span class="dot" aria-hidden="true"></span>
       <span class="name">은디</span>
       <span class="role">
@@ -922,6 +925,11 @@ function renderCats(){
       state.cat = btn.dataset.cat;
       renderCats();
       renderGrid();
+      
+      const workTarget = document.getElementById('work');
+      if (workTarget) {
+        workTarget.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 }
