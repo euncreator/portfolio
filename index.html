@@ -1204,75 +1204,75 @@ window.CASES = [
   },
 
   /* ---------------------------------------------------------
-     04. TECH INFORMATION DESIGN
+     04. TECH DOC GUIDE
   --------------------------------------------------------- */
   {
-    id: 'tech-info',
-    cover: 'images/w09.jpg',
-    tags: ['Information Design', 'Visualization', 'Document System'],
+    id: 'tech-docs',
+    cover: 'images/case/tech-docs/cover.jpg',
+    tags: ['Document System', 'Information Hierarchy', 'Template'],
     kr: {
-      title: '기술 정보 구조화 & 시각화',
-      summary: '제안서·회사소개서의 복잡한 엔지니어링 정보를 구조화·시각화하고, 설계서·매뉴얼·테스트 리포트 등 전사 기술문서 양식을 하나의 체계로 표준화했습니다.',
+      title: '전사 기술문서 양식 가이드',
+      summary: '설계서·매뉴얼·테스트 리포트 등 전사 기술문서의 구조와 서식을 하나의 가이드로 표준화해, 누가 써도 같은 품질로 작성하고 빠르게 검토할 수 있게 했습니다.',
       period: 'TODO: 2025.00 ~ 2026.00',
-      org: 'E2S · 사업관리팀 · 전사',
-      role: '정보 설계, 문서 체계 설계, 시각화',
+      org: 'E2S · 전사',
+      role: '문서 체계 설계, 양식 가이드 제작',
       contrib: 'TODO: 100%',
-      tools: 'TODO: PowerPoint, Illustrator, Word',
+      tools: 'TODO: Word, PowerPoint, Illustrator',
       metric: { v: 'TODO: 00종', l: 'TODO: 기술문서 양식 통합' },
 
-      overview: '엔지니어링 회사의 기술 정보는 정확하지만 읽기 어렵습니다. 이 프로젝트는 영업 제안서(EMS 특화 제안서)와 회사소개서에서 복잡한 기술 스펙을 한눈에 이해되는 구조와 도식으로 바꾸고, 그 경험을 바탕으로 엔지니어가 쓰는 기술문서의 구조와 서식까지 표준화한 작업입니다.',
+      overview: '엔지니어가 작성하는 설계서, 매뉴얼, 테스트 리포트 등 기술문서의 구조와 서식을 정리한 양식 가이드를 만든 프로젝트입니다. 문서를 꾸미는 것이 아니라, 누가 쓰더라도 같은 구조로 쓰이고 읽는 사람이 필요한 정보를 빠르게 찾을 수 있는 문서 체계를 만드는 것을 목표로 했습니다.',
 
       problem: {
-        headline: '정보는 정확했지만, 읽는 사람이 핵심을 찾기까지 너무 오래 걸렸습니다.',
-        text: '제안서와 소개서에는 기술 스펙이 텍스트와 표로 빽빽하게 나열되어 있었고, 기술문서는 부서와 작성자마다 목차와 표기 방식이 달랐습니다. 고객은 핵심을 놓치고, 내부 검토자는 문서마다 정보의 위치부터 찾아야 했습니다.',
+        headline: '같은 종류의 문서도 작성자마다 구조가 달라, 읽고 검토하는 데 시간이 오래 걸렸습니다.',
+        text: '부서와 작성자마다 목차, 표, 그림 표기 방식이 달랐습니다. 검토자는 문서마다 필요한 정보가 어디 있는지부터 찾아야 했고, 고객과 해외 법인에 나가는 문서의 완성도도 들쭉날쭉했습니다.',
         points: [
-          { t: '정보 과밀', d: '기술 스펙이 같은 무게로 나열되어 무엇이 중요한지 보이지 않았습니다.' },
-          { t: '양식 난립', d: '같은 종류의 문서도 작성자마다 구조와 서식이 달랐습니다.' },
-          { t: '대외 신뢰도', d: '고객과 해외 법인에 나가는 문서의 완성도에 편차가 있었습니다.' },
+          { t: '양식 난립', d: '부서·작성자마다 목차와 서식이 제각각이었습니다.' },
+          { t: '검토 비용', d: '필요한 정보의 위치가 문서마다 달라 검토에 시간이 걸렸습니다.' },
+          { t: '대외 신뢰도', d: '외부로 나가는 문서의 완성도에 편차가 있었습니다.' },
         ],
       },
 
       analysis: {
-        headline: '문서 종류는 달라도, 읽는 사람이 찾는 정보의 순서와 뼈대는 대부분 같았습니다.',
-        text: '제안서를 받는 고객과 기술문서를 검토하는 내부 사용자가 각각 무엇을 먼저 확인하는지 정리했습니다. 기존 문서를 유형별로 모아 비교해 공통으로 반복되는 항목(개요, 범위, 사양, 절차, 결과, 이력)을 뽑아냈습니다.',
+        headline: '문서 종류는 달라도, 반복되는 뼈대는 대부분 같았습니다.',
+        text: '각 부서의 기존 문서를 모아 유형별로 분류하고 목차와 필수 항목을 비교했습니다. 문서마다 공통으로 들어가는 정보(개요, 범위, 사양, 절차, 결과, 이력)를 뽑아내 표준 뼈대로 삼을 수 있다는 것을 확인했습니다.',
         figures: [
-          { src: 'images/case/tech-info/analysis.jpg', cap: '기존 문서 분석 · 정보 우선순위' },
+          { src: 'images/case/tech-docs/analysis.jpg', cap: '기존 문서 유형 분석' },
         ],
       },
 
       process: {
-        headline: '정보를 분류하고 위계를 정한 뒤, 도식과 템플릿으로 누구나 같은 품질을 낼 수 있게 했습니다.',
+        headline: '공통 뼈대를 정하고, 정보 위계와 스타일 규칙을 담은 양식 가이드로 배포했습니다.',
         steps: [
-          { t: '정보 분류 · 위계 정의', d: '전달해야 할 정보를 핵심 메시지 → 근거(스펙·사례) → 상세 자료로 나누고, 문서 안에서의 순서와 크기를 정했습니다.', src: 'images/case/tech-info/step1.jpg', cap: '정보 구조 정의' },
-          { t: '도식 · 인포그래픽', d: '시스템 구성, 기술 흐름, 사업 영역처럼 글로 설명하기 어려운 내용을 다이어그램과 인포그래픽으로 바꿨습니다.', src: 'images/case/tech-info/step2.jpg', cap: 'EMS 제안서 · 회사소개서 도식' },
-          { t: '기술문서 표준 구조', d: '설계서, 매뉴얼, 테스트 리포트의 목차와 필수 항목을 정하고 공통 영역(표지, 개정 이력, 개요)과 유형별 영역을 나눴습니다.', src: 'images/case/tech-info/step3.jpg', cap: '문서 구조 · 스타일 규칙' },
-          { t: '템플릿 · 배포', d: '작성자가 빈칸만 채우면 되는 템플릿을 만들어 전사에 배포하고, 사용 의견을 반영해 보완했습니다.', src: 'images/case/tech-info/step4.jpg', cap: '표준 템플릿' },
+          { t: '공통 구조 정의', d: '문서 유형별 목차와 필수 항목을 정하고, 공통 영역(표지, 개정 이력, 개요)과 유형별 영역을 나눴습니다.', src: 'images/case/tech-docs/step1.jpg', cap: '문서 구조 정의' },
+          { t: '정보 위계 · 스타일', d: '제목 단계, 본문, 표, 도식, 주의 문구의 위계와 스타일 규칙을 정해 문서만 봐도 정보의 중요도가 구분되도록 했습니다.', src: 'images/case/tech-docs/step2.jpg', cap: '스타일 규칙' },
+          { t: '양식 가이드 · 템플릿', d: '설계서, 매뉴얼, 테스트 리포트 양식과 작성 가이드를 만들어 작성자가 빈칸을 채우기만 하면 되도록 했습니다.', src: 'images/case/tech-docs/step3.jpg', cap: '양식 가이드' },
+          { t: '배포 · 정착', d: '전사에 양식과 작성 안내를 배포하고, 실제 사용하면서 나온 의견을 반영해 보완했습니다.', src: 'images/case/tech-docs/step4.jpg', cap: '적용 사례' },
         ],
         decisions: [
-          { d: '서식보다 "구조"를 먼저 표준화', why: '서식만 통일하면 내용 순서는 여전히 제각각이기 때문에, 무엇을 어떤 순서로 쓸지부터 정해야 했습니다.' },
-          { d: '한 장에 하나의 핵심 메시지', why: '고객이 제안서를 넘기며 훑어봐도 페이지마다 무엇을 말하는지 바로 알 수 있게 하기 위해서입니다.' },
+          { d: '서식보다 "구조"를 먼저 표준화', why: '서식만 통일하면 내용 구조는 여전히 제각각이기 때문에, 무엇을 어떤 순서로 쓸지부터 정해야 했습니다.' },
+          { d: '작성자가 이미 쓰는 툴에서 바로 쓰는 양식', why: '새로운 툴을 배우게 하면 정착이 어렵기 때문에, 엔지니어가 쓰던 환경 그대로 적용할 수 있게 했습니다.' },
         ],
       },
 
       result: {
-        headline: '복잡한 기술 정보가 한눈에 읽히고, 누가 작성해도 같은 구조의 문서가 나오게 되었습니다.',
-        text: '제안서와 회사소개서는 영업 현장에서 회사의 기술력을 설명하는 핵심 자료로 쓰이고 있고, 표준 템플릿은 전사 기술문서의 기본 양식이 되었습니다.',
-        before: { src: 'images/case/tech-info/before.jpg', cap: '개선 전' },
-        after:  { src: 'images/case/tech-info/after.jpg',  cap: '개선 후' },
+        headline: '누가 작성해도 같은 구조의 문서가 나오고, 검토자는 필요한 정보를 같은 위치에서 찾을 수 있게 되었습니다.',
+        text: '양식 가이드는 전사 기술문서의 기본 기준으로 쓰이고 있으며, 외부로 나가는 문서의 품질도 일정해졌습니다.',
+        before: { src: 'images/case/tech-docs/before.jpg', cap: '표준화 전' },
+        after:  { src: 'images/case/tech-docs/after.jpg',  cap: '표준화 후' },
         metrics: [
-          { v: 'TODO: 00종', l: '통합한 기술문서 양식' },
+          { v: 'TODO: 00종', l: '통합한 문서 양식' },
           { v: 'TODO: 0개', l: '적용 부서' },
-          { v: 'TODO', l: 'TODO: 예) 제안서 활용 건수, 수주 기여' },
+          { v: 'TODO: 3종', l: '표준 양식 (설계서·매뉴얼·테스트 리포트)' },
         ],
       },
 
-      retro: '화면이든 문서든, 사용자가 정보를 찾는 순서를 설계하는 일은 같다는 것을 배웠습니다. 이 정보 설계 경험이 HMI와 PMS처럼 데이터가 많은 화면을 설계할 때 가장 큰 기반이 되었습니다.',
+      retro: 'UI뿐 아니라 문서도 사용자(작성자와 검토자)가 있는 "인터페이스"라는 것을 배웠습니다. 사용자가 정보를 찾는 순서를 설계한 이 경험은 HMI와 PMS처럼 데이터가 많은 화면을 설계할 때도 그대로 이어집니다.',
     },
     en: {
-      title: 'Technical Information Design & Visualization',
-      summary: 'Structured and visualized complex engineering information in proposals and company decks, and standardized company-wide technical document formats into one system.',
-      org: 'E2S · Business Mgmt. · Company-wide',
-      role: 'Information design, document system, visualization',
+      title: 'Company-wide Technical Document Guide',
+      summary: 'Standardized the structure and format of technical documents — design specs, manuals and test reports — into one guide so anyone can write them consistently and reviewers can check them fast.',
+      org: 'E2S · Company-wide',
+      role: 'Document system design, format guide',
     },
   },
 
@@ -1284,7 +1284,7 @@ window.CASES = [
     cover: 'images/w12.jpg',
     tags: ['TV UI', 'Remote Control', 'Focus Navigation'],
     kr: {
-      title: '셋톱 TV 게임 플랫폼 UI',
+      title: '셋톱박스 TV 플랫폼 UI',
       summary: '탐색 단계에서 바로 흥미를 느끼고 망설임 없이 게임을 시작할 수 있도록, 리모컨 조작 환경에 맞춘 직관적인 TV UI를 구성했습니다.',
       period: 'TODO: 2023.00 ~ 2023.00',
       org: 'TODO: 이전 회사명 · iircade',
@@ -1338,7 +1338,7 @@ window.CASES = [
       retro: '사용 환경의 제약이 디자인의 방향을 결정한다는 것을 배운 프로젝트입니다. 조작 수단이 제한된 환경에서 사용자의 현재 위치와 다음 행동을 분명하게 보여주는 원칙은, 지금 장비 UI를 설계할 때도 그대로 적용하고 있습니다.',
     },
     en: {
-      title: 'Set-top TV Game Platform UI',
+      title: 'Set-top Box TV Platform UI',
       summary: 'Designed an intuitive, remote-friendly TV UI so players feel engaged while browsing and jump into play without hesitation.',
       org: 'iircade',
       role: 'Graphic, UI/UX',
